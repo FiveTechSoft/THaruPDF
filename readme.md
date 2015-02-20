@@ -118,9 +118,9 @@ La contraseña del usuario y/o propietario se pueden indicar en el momento de
 creación del objeto print, o bien asignar manualmente las DATAs de la clase
 antes de llamar al método Save() o End()
 
-   DATA nPermission
-   DATA cPassword
-   DATA cOwnerPassword
+    DATA nPermission
+    DATA cPassword
+    DATA cOwnerPassword
 
 # Como enlazar
 Además de incluir *PdfPrinter.lib*, se requiere *libhpdf.lib* y *png.lib*, que se
