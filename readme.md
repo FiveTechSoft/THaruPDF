@@ -148,16 +148,16 @@ de la librería, y añadiremos allí todo el nuevo código. Con esto lograremos que
 la clase haga lo que queremos o añadamos alguna prestación sin interferir con el
 código público de la librería, usado en todos los proyectos.
 
-   #include 'hbclass.ch'
-   #include 'harupdf.ch'
+      #include 'hbclass.ch'
+      #include 'harupdf.ch'
 
-   #define __NODEBUG__
-   #include 'debug.ch'
+      #define __NODEBUG__
+      #include 'debug.ch'
 
-   //------------------------------------------------------------------------------
-   CLASS THaruPDF FROM THaruPDFBase
-      // Clase intermedia para proveer de variaciones protegidas
-   ENDCLASS
+      //------------------------------------------------------------------------------
+      CLASS THaruPDF FROM THaruPDFBase
+         // Clase intermedia para proveer de variaciones protegidas
+      ENDCLASS
 
 
 Cuando alguna nueva funcionalidad se incorpore a la librería, automáticamente se

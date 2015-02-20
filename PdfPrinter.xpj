@@ -67,6 +67,8 @@
       <File Filename="leeme.txt"/>
       <File Filename="HaruFonts.prg"/>
       <File Filename="harupdf.ch"/>
+      <File Filename="readme.md"/>
+      <File Filename=".gitignore"/>
    </Files>
 </Project>
 
