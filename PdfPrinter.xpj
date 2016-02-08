@@ -62,7 +62,7 @@
       <Type Value="SVN"/>
    </VCS>
    <Files>
-      <File Filename="THaruPDFBase.prg"/>
+      <File Filename="THaruPDFBase.prg" UseFlags="Y" Flags="/n /w1 /p"/>
       <File Filename="THaruPDF.prg"/>
       <File Filename="leeme.txt"/>
       <File Filename="HaruFonts.prg"/>

@@ -55,21 +55,21 @@ una fuente TrueType.
 Las fuentes predefinidas (conocidas como Base14) son las más livianas en términos
 del tamaño del pdf generado, porque no se insertan en el pdf al estar ya incluídas
 en los lectores de pdf como el Acrobat Reader, Foxit, etc. Son las siguientes:
-      Courier
-      Courier-Bold
-      Courier-Oblique
-      Courier-BoldOblique
-      Helvetica
-      Helvetica-Bold
-      Helvetica-Oblique
-      Helvetica-BoldOblique
-      Times-Roman
-      Times-Bold
-      Times-Italic
-      Times-BoldItalic
-      Symbol
-      ZapfDingbats
 
+    Courier
+    Courier-Bold
+    Courier-Oblique
+    Courier-BoldOblique
+    Helvetica
+    Helvetica-Bold
+    Helvetica-Oblique
+    Helvetica-BoldOblique
+    Times-Roman
+    Times-Bold
+    Times-Italic
+    Times-BoldItalic
+    Symbol
+    ZapfDingbats
 
 Las fuentes TrueType deben ser incluídas en el pdf generado, por lo tanto el fi-
 chero <fuente>.ttf debe estar disponible. El nombre de las fuentes no coincide,
@@ -148,16 +148,16 @@ de la librería, y añadiremos allí todo el nuevo código. Con esto lograremos que
 la clase haga lo que queremos o añadamos alguna prestación sin interferir con el
 código público de la librería, usado en todos los proyectos.
 
-      #include 'hbclass.ch'
-      #include 'harupdf.ch'
+    #include 'hbclass.ch'
+    #include 'harupdf.ch'
 
-      #define __NODEBUG__
-      #include 'debug.ch'
+    #define __NODEBUG__
+    #include 'debug.ch'
 
-      //------------------------------------------------------------------------------
-      CLASS THaruPDF FROM THaruPDFBase
-         // Clase intermedia para proveer de variaciones protegidas
-      ENDCLASS
+    //------------------------------------------------------------------------------
+    CLASS THaruPDF FROM THaruPDFBase
+       // Clase intermedia para proveer de variaciones protegidas
+    ENDCLASS
 
 
 Cuando alguna nueva funcionalidad se incorpore a la librería, automáticamente se

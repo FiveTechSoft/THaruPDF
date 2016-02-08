@@ -1,7 +1,7 @@
 [DESKTOP]
-1=THaruPDFBase.prg,11,0,11,0,0,0,192
-2=harupdf.ch,292,8,295,46,265,0,808
-3=HaruFonts.prg,14,29,14,9,0,0,192
-4=leeme.txt,15,0,15,0,0,0,1470
-5=THaruPDF.prg,17,8,8,0,0,0,192
-Current=4
+1=THaruPDFBase.prg,0,0,0,0,0,0,192
+2=harupdf.ch,490,19,490,19,616,0,808
+3=HaruFonts.prg,35,9,35,26,0,0,192
+4=THaruPDF.prg,10,0,10,0,0,0,192
+5=readme.md,48,0,47,14,19,0,784
+Current=3

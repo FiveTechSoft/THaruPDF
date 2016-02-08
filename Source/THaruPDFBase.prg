@@ -45,6 +45,8 @@ CLASS THaruPDFBase
    METHOD CmRect2Pix()
    METHOD nVertRes() INLINE 72
    METHOD nHorzRes() INLINE 72
+   METHOD nLogPixelX() INLINE 72  // Number of pixels per logical inch
+   METHOD nLogPixelY() INLINE 72
    METHOD nVertSize() INLINE HPDF_Page_GetHeight( ::hPage )
    METHOD nHorzSize() INLINE HPDF_Page_GetWidth( ::hPage )
    METHOD SizeInch2Pix()
@@ -55,6 +57,7 @@ CLASS THaruPDFBase
    METHOD SyncPage()
    METHOD CheckPage()
    METHOD GetTextWidth()
+   METHOD GetTextHeight()
    METHOD End()
 ENDCLASS
 
@@ -135,19 +138,15 @@ RETURN Self
 //------------------------------------------------------------------------------
 METHOD Say( nRow, nCol, cText, oFont, nWidth, nClrText, nBkMode, nPad )
 //------------------------------------------------------------------------------
+   LOCAL c
+
    ::CheckPage()
    HPDF_Page_BeginText( ::hPage )
    HPDF_Page_SetFontAndSize( ::hPage, oFont[1], oFont[2] )
-   /*
-   IF Empty( nWidth )
-      nWidth := HPDF_Page_TextWidth( ::hPage, cText )  +80
-      DEBUG nWidth
+   IF ValType( nClrText ) == 'N'
+      c:= HPDF_Page_GetRGBFill( ::hPage )
+      HPDF_Page_SetRGBFill( ::hPage, ( Int( nClrText / 0x10000 ) % 256 ) / 256.00, ( Int( nClrText / 0x100 )  % 256 )  / 256.00 , ( nClrText  % 256 ) / 256.00 )
    ENDIF
-
-   IF nPad == NIL
-      nPad:= HPDF_TALIGN_LEFT
-   ENDIF
-   */
 
    DO CASE
    CASE nPad == NIL .OR. nPad == HPDF_TALIGN_LEFT
@@ -159,14 +158,10 @@ METHOD Say( nRow, nCol, cText, oFont, nWidth, nClrText, nBkMode, nPad )
       HPDF_Page_TextOut( ::hPage, nCol-nWidth/2, ::nHeight - nRow - oFont[2], cText )
    ENDCASE
 
-   // HPDF_Page_TextRect( ::hPage, nCol, ::nHeight - nRow, nCol + nWidth, ::nHeight - nRow + oFont[2], cText, nPad, NIL)
+   IF ValType( c ) == 'A'
+      HPDF_Page_SetRGBFill( ::hPage, c[1], c[2], c[3] )
+   ENDIF
    HPDF_Page_EndText( ::hPage )
-
-   /* Recuadro del texto para probar
-   HPDF_Page_SetLineWidth( ::hPage, 1 )
-   HPDF_Page_Rectangle( ::hPage, nCol, ::nHeight - nRow - oFont[2], nWidth, oFont[2])
-   HPDF_Page_Stroke( ::hPage )
-   */
 
 RETURN Self
 
@@ -296,7 +291,17 @@ METHOD SayBitmap( nRow, nCol, xBitmap, nWidth, nHeight, nRaster )
 
 RETURN Self
 
-METHOD Line()
+METHOD Line( nTop, nLeft, nBottom, nRight, oPen )
+   IF oPen != NIL
+      // HPDF_Page_SetLineWidth (page, 0);
+      // DATA   nStyle, nWidth, nColor
+      HPDF_Page_SetLineWidth(::hPage, oPen:nWidth)
+      HPDF_Page_SetRGBStroke( ::hPage, ( Int( oPen:nColor / 0x10000 ) % 256 ) / 256.00, ( Int( oPen:nColor / 0x100 )  % 256 )  / 256.00 , ( oPen:nColor  % 256 ) / 256.00 )
+
+   ENDIF
+   HPDF_Page_MoveTo (::hPage, nLeft, ::nHeight - nTop)
+   HPDF_Page_LineTo (::hPage, nRight, ::nHeight - nBottom)
+   HPDF_Page_Stroke (::hPage)
 RETURN Self
 
 METHOD Save( cFilename )
@@ -319,6 +324,10 @@ RETURN HPDF_SaveToFile (::hPdf, cFilename)
 METHOD GetTextWidth( cText, oFont )
    HPDF_Page_SetFontAndSize( ::hPage, oFont[1], oFont[2] )
 RETURN HPDF_Page_TextWidth( ::hPage, cText )
+
+METHOD GetTextHeight( cText, oFont )
+   HPDF_Page_SetFontAndSize( ::hPage, oFont[1], oFont[2] )
+RETURN oFont[2] // La altura de la fuente cuando la creamos
 
 METHOD End()
    LOCAL nResult
