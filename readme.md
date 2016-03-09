@@ -1,14 +1,14 @@
 
-# Como usar la librerÌa
+# Como usar la librer√≠a
 
 La clase THaruPdf intenta proveer las mismas funciones de la clase TPrinter de
-FW de modo que se pueda usar en su reemplazo con el mÌnimo de cambios.
+FW de modo que se pueda usar en su reemplazo con el m√≠nimo de cambios.
 
 
 
-## DeclaraciÛn del objeto de impresiÛn
+## Declaraci√≥n del objeto de impresi√≥n
 
-Donde antes escribÌamos
+Donde antes escrib√≠amos
 
     DEFINE PRINTER oPrint .....
 
@@ -17,32 +17,32 @@ ahora escribimos
     oPrint:= THaruPdf():New()
 
 opcionalmente podemos indicar desde el principio el nombre del pdf y los valores
-de las contraseÒas. Los par·metros completos son
+de las contrase≈Ñas. Los par√°metros completos son
 
  oPrint:= THaruPdf():New( cFileName, cPassword, cOwnerPassword, nPermission )
 
 cPassword es la clave para acceder al pdf con los limites indicados por
 nPermission, cOwnerPassword es para poder modificarlo.
 nPermission se establece por defecto como HPDF_ENABLE_READ + HPDF_ENABLE_PRINT + HPDF_ENABLE_COPY
-Los par·metros de seguridad son totalmente opcionales.
+Los par√°metros de seguridad son totalmente opcionales.
 
 Si estos valores se establecen al crear el objeto, cuando se invoque a End()
-autom·ticamente grabar· el pdf. Si no se indica nada al crear el objeto, se graba
-manualmente con el mÈtodo Save
+autom√°ticamente grabar√° el pdf. Si no se indica nada al crear el objeto, se graba
+manualmente con el m√©todo Save
 
-    oPrint:Save( cNombreDelPdf ) //  --> devuelve un valor numÈrico
+    oPrint:Save( cNombreDelPdf ) //  --> devuelve un valor num√©rico
 
-El mÈtodo Save() devuelve un valor numÈrico. Si todo est· bien, devuelve 0, un
-valor diferente de 0 indica alg˙n error de Haru.
+El m√©todo Save() devuelve un valor num√©rico. Si todo est√° bien, devuelve 0, un
+valor diferente de 0 indica alg√∫n error de Haru.
 
-## Inicio y Fin de p·gina
+## Inicio y Fin de p√°gina
 
     oPrint:StartPage()
     oPrint:EndPage()
 
 ## Fuentes
 
-La declaraciÛn es diferente. Con FW se escribÌa
+La declaraci√≥n es diferente. Con FW se escrib√≠a
     DEFINE FONT oFont1 NAME "COURIER NEW" SIZE 0, -8 Of oPrint
 
 con THaruPdf :
@@ -52,8 +52,8 @@ con THaruPdf :
 Un detalle importante es que tipo de fuente utilizamos, si es una predefinida, o
 una fuente TrueType.
 
-Las fuentes predefinidas (conocidas como Base14) son las m·s livianas en tÈrminos
-del tamaÒo del pdf generado, porque no se insertan en el pdf al estar ya incluÌdas
+Las fuentes predefinidas (conocidas como Base14) son las m√°s livianas en t√©rminos
+del tama≈Ño del pdf generado, porque no se insertan en el pdf al estar ya inclu√≠das
 en los lectores de pdf como el Acrobat Reader, Foxit, etc. Son las siguientes:
 
     Courier
@@ -71,16 +71,16 @@ en los lectores de pdf como el Acrobat Reader, Foxit, etc. Son las siguientes:
     Symbol
     ZapfDingbats
 
-Las fuentes TrueType deben ser incluÌdas en el pdf generado, por lo tanto el fi-
+Las fuentes TrueType deben ser inclu√≠das en el pdf generado, por lo tanto el fi-
 chero <fuente>.ttf debe estar disponible. El nombre de las fuentes no coincide,
 en general, con el nombre del fichero, por lo que hay que incluir el nombre del
-fichero en la declaraciÛn de las fuentes usando la funciÛn:
+fichero en la declaraci√≥n de las fuentes usando la funci√≥n:
 
      HaruAddFont( cFontName, cTtfFile )
 
 *cFontName* es el nombre de la fuente, y *cTtfFile* el fichero .ttf que lo
 define.
-Por comodidad y frecuencia de uso, ya est·n predefinidas las siguientes fuentes,
+Por comodidad y frecuencia de uso, ya est√°n predefinidas las siguientes fuentes,
 por lo que no es necesario declararlas.
 
     Arial
@@ -89,23 +89,23 @@ por lo que no es necesario declararlas.
     Calibri
     Tahoma
 
-Tambien, por comodidad, la funciÛn HaruAddFont busca el fichero en el directorio
+Tambien, por comodidad, la funci√≥n HaruAddFont busca el fichero en el directorio
 actual, y si no lo encuentra, en el directorio de fuentes de Windows. Podemos
 declarar un directorio alternativo para incluir nuestras propias fuentes con la
-funciÛn:
+funci√≥n:
 
     SetHaruFontDir(cDir)
 
 donde cDir es el directorio donde queremos que busque las fuentes.
 
 ## imagenes
-De momento solo soporta im·genes en formato PNG y JPG.
-AtenciÛn/Achtung/Warning: Las pruebas realizadas indican que usar pngs generados
+De momento solo soporta im√°genes en formato PNG y JPG.
+Atenci√≥n/Achtung/Warning: Las pruebas realizadas indican que usar pngs generados
 con Paint producen pdfs enormes y son muy lentos.
-La librerÌa ha sido optimizada para cargar las im·genes de forma indexada, es
-decir que cuando repetimos una imagen en varias p·ginas, la librerÌa carga la imagen
+La librer√≠a ha sido optimizada para cargar las im√°genes de forma indexada, es
+decir que cuando repetimos una imagen en varias p√°ginas, la librer√≠a carga la imagen
 dentro del pdf una sola vez, y usa la misma copia de imagen cada vez que se referencia,
-por ejemplo como fondo de cada p·gina.
+por ejemplo como fondo de cada p√°gina.
 
 ## como guardar el fichero
 
@@ -113,40 +113,40 @@ No hace falta indicar ENDPRINT ni destruir las fuentes, es decir
     ENDPRINT no hace falta
     oFont:End() no hace falta
 
-## poner contraseÒa.
-La contraseÒa del usuario y/o propietario se pueden indicar en el momento de
-creaciÛn del objeto print, o bien asignar manualmente las DATAs de la clase
-antes de llamar al mÈtodo Save() o End()
+## poner contrase√±a.
+La contrase≈Ña del usuario y/o propietario se pueden indicar en el momento de
+creaci√≥n del objeto print, o bien asignar manualmente las DATAs de la clase
+antes de llamar al m√©todo Save() o End()
 
     DATA nPermission
     DATA cPassword
     DATA cOwnerPassword
 
 # Como enlazar
-Adem·s de incluir *PdfPrinter.lib*, se requiere *libhpdf.lib* y *png.lib*, que se
-encuentran en el mismo directorio del proyecto de la librerÌa, y las librerÌas
+Adem√°s de incluir *PdfPrinter.lib*, se requiere *libhpdf.lib* y *png.lib*, que se
+encuentran en el mismo directorio del proyecto de la librer√≠a, y las librer√≠as
 *hbhpdf.lib* y *hbzlib.lib* del propio Harbour.
 
-# LÌmites
-El lÌmite m·s importante es el de la cantidad de p·ginas, que es bastante alto.
-Generando nÛminas con un bitmap de fondo se han generado pdfs de hasta 8000
-p·ginas. Aparentemente superando esa cantidad de p·ginas se producen errores por
+# L√≠mites
+El l√≠mite m√°s importante es el de la cantidad de p√°ginas, que es bastante alto.
+Generando n√≥minas con un bitmap de fondo se han generado pdfs de hasta 8000
+p√°ginas. Aparentemente superando esa cantidad de p√°ginas se producen errores por
 la falta de capacidad de las estructuras internas de los pdfs, que requiere una
-reestructuraciÛn interna de la paginaciÛn que Haru no es capaz de hacer.
+reestructuraci√≥n interna de la paginaci√≥n que Haru no es capaz de hacer.
 
 # Errores, cosas que faltan...
-Como es una versiÛn muy temprana, es probable que algo no funcione como se
+Como es una versi√≥n muy temprana, es probable que algo no funcione como se
 espera o echemos en falta alguna funcionalidad. Para poder implementar nuevas
-funciones o corregir/modificar las existentes, la clase est· montada con el patrÛn
-'variaciones protegidas', usando como fachada una clase intermedia vacÌa (THaruPDF),
-que hereda toda la funcionalidad de la implementaciÛn real (THaruPDFBase).
+funciones o corregir/modificar las existentes, la clase est√° montada con el patr√≥n
+'variaciones protegidas', usando como fachada una clase intermedia vac√≠a (THaruPDF),
+que hereda toda la funcionalidad de la implementaci√≥n real (THaruPDFBase).
 Esto tiene como objeto permitirnos introducir ajustes y nuevas funciones sin tener
-que modificar el cÛdigo original. Si queremos modificar algo de la clase, EN
+que modificar el c√≥digo original. Si queremos modificar algo de la clase, EN
 NUESTRO PROYECTO crearemos un nuevo prg y declararemos la clase THaruPDF que
-herede de THaruPDFBase, podemos copiar el prg vacio que ya est· en el proyecto
-de la librerÌa, y aÒadiremos allÌ todo el nuevo cÛdigo. Con esto lograremos que
-la clase haga lo que queremos o aÒadamos alguna prestaciÛn sin interferir con el
-cÛdigo p˙blico de la librerÌa, usado en todos los proyectos.
+herede de THaruPDFBase, podemos copiar el prg vacio que ya est√° en el proyecto
+de la librer√≠a, y a≈Ñadiremos all√≠ todo el nuevo c√≥digo. Con esto lograremos que
+la clase haga lo que queremos o a≈Ñadamos alguna prestaci√≥n sin interferir con el
+c√≥digo p√∫blico de la librer√≠a, usado en todos los proyectos.
 
     #include 'hbclass.ch'
     #include 'harupdf.ch'
@@ -160,7 +160,7 @@ cÛdigo p˙blico de la librerÌa, usado en todos los proyectos.
     ENDCLASS
 
 
-Cuando alguna nueva funcionalidad se incorpore a la librerÌa, autom·ticamente se
-incluir· en nuestro proyecto, sin afectar la parte local del cÛdigo adicional que
+Cuando alguna nueva funcionalidad se incorpore a la librer√≠a, autom√°ticamente se
+incluir√° en nuestro proyecto, sin afectar la parte local del c√≥digo adicional que
 se haya definido en nuestro proyecto.
 
