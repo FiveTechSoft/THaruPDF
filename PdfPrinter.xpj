@@ -3,7 +3,7 @@
    <Type Value="lib"/>
    <Description Value="PdfPrinter"/>
    <Output Value="PdfPrinter.lib"/>
-   <Environment Value="fwh2013_2"/>
+   <Environment Value="Harbour"/>
    <MainModule Value="THaruPDFBase.prg"/>
    <MultipleInstances Value="Y"/>
    <XPManifest Value="Y"/>

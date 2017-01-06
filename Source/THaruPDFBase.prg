@@ -50,9 +50,15 @@ CLASS THaruPDFBase
    METHOD nVertSize() INLINE HPDF_Page_GetHeight( ::hPage )
    METHOD nHorzSize() INLINE HPDF_Page_GetWidth( ::hPage )
    METHOD SizeInch2Pix()
+   METHOD CmSayBitmap()
    METHOD SayBitmap()
    METHOD GetImageFromFile()
    METHOD Line()
+   METHOD CmLine()
+   METHOD Rect()
+   METHOD CmRect()
+   METHOD DashLine()
+   METHOD CmDashLine()
    METHOD Save()
    METHOD SyncPage()
    METHOD CheckPage()
@@ -339,3 +345,49 @@ METHOD End()
    HPDF_Free( ::hPdf )
 
 RETURN nResult
+
+METHOD Rect( nTop, nLeft, nBottom, nRight, oPen, nColor )
+   IF oPen != NIL
+      // HPDF_Page_SetLineWidth (page, 0);
+      // DATA   nStyle, nWidth, nColor
+      IF ValType( oPen ) == 'N'
+         HPDF_Page_SetLineWidth(::hPage, oPen)
+         IF ValType( nColor ) == 'N'
+            HPDF_Page_SetRGBStroke( ::hPage, ( Int( nColor / 0x10000 ) % 256 ) / 256.00, ( Int( nColor / 0x100 )  % 256 )  / 256.00 , ( nColor  % 256 ) / 256.00 )
+         ENDIF
+      ELSE
+         HPDF_Page_SetLineWidth(::hPage, oPen:nWidth)
+         HPDF_Page_SetRGBStroke( ::hPage, ( Int( oPen:nColor / 0x10000 ) % 256 ) / 256.00, ( Int( oPen:nColor / 0x100 )  % 256 )  / 256.00 , ( oPen:nColor  % 256 ) / 256.00 )
+      ENDIF
+   ENDIF
+   HPDF_Page_MoveTo (::hPage, nLeft, ::nHeight - nTop)
+   HPDF_Page_LineTo (::hPage, nRight, ::nHeight - nTop)
+   HPDF_Page_LineTo (::hPage, nRight, ::nHeight - nBottom)
+   HPDF_Page_LineTo (::hPage, nLeft, ::nHeight - nBottom)
+   HPDF_Page_LineTo (::hPage, nLeft, ::nHeight - nTop)
+   HPDF_Page_Stroke (::hPage)
+RETURN Self
+
+METHOD CmRect( nTop, nLeft, nBottom, nRight, oPen )
+   ::Rect( nTop*72/2.54, nLeft*72/2.54, nBottom*72/2.54, nRight*72/2.54, oPen )
+RETURN Self
+
+METHOD CmLine( nTop, nLeft, nBottom, nRight, oPen )
+   ::Line( nTop*72/2.54, nLeft*72/2.54, nBottom*72/2.54, nRight*72/2.54, oPen )
+RETURN Self
+
+METHOD CmDashLine( nTop, nLeft, nBottom, nRight, oPen, nDashMode )
+   ::DashLine( nTop*72/2.54, nLeft*72/2.54, nBottom*72/2.54, nRight*72/2.54, oPen, nDashMode )
+RETURN Self
+
+METHOD DashLine( nTop, nLeft, nBottom, nRight, oPen, nDashMode )
+
+   HPDF_Page_SetDash(::hPage, { 3, 7 }, 2, 2)
+   ::Line( nTop, nLeft, nBottom, nRight, oPen )
+   HPDF_Page_SetDash(::hPage, NIL, 0, 0)
+
+RETURN Self
+
+METHOD CmSayBitmap( nRow, nCol, xBitmap, nWidth, nHeight, nRaster )
+RETURN ::SayBitmap( nRow*72/2.54, nCol*72/2.54, xBitmap, nWidth*72/2.54, nHeight*72/2.54, nRaster )
+

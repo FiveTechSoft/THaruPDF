@@ -15,7 +15,7 @@ STATIC cFontDir
 FUNCTION SetHaruFontDir(cDir)
 //------------------------------------------------------------------------------
    LOCAL cPrevValue:= cFontDir
-   IF ValType( cDir ) == 'C' .AND. IsDirectory( cDir )
+   IF ValType( cDir ) == 'C' .AND. HB_DirExists( cDir )
       cFontDir:= cDir
    ENDIF
 RETURN cPrevValue
@@ -57,12 +57,12 @@ RETURN NIL
 //------------------------------------------------------------------------------
 FUNCTION HaruAddFont( cFontName, cTtfFile )
 //------------------------------------------------------------------------------
-   LOCAL cDir
+   LOCAL aList := GetHaruFontList()
    IF !File( cTtfFile ) .AND. File( GetHaruFontDir() + '\' + cTtfFile )
       cTtfFile:= GetHaruFontDir() + '\' + cTtfFile
    ENDIF
    IF File( cTtfFile )
-      aAdd( aTtfFontList, { cFontName, cTtfFile } )
+      aAdd( aList, { cFontName, cTtfFile } )
    ELSE
       Alert( 'Archivo inexistente '+cTtfFile )
    ENDIF
