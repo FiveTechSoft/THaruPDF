@@ -184,7 +184,7 @@ RETURN Self
 
 
 //------------------------------------------------------------------------------
-METHOD DefineFont( cFontName, nSize )
+METHOD DefineFont( cFontName, nSize, lEmbed )
 //------------------------------------------------------------------------------
    LOCAL font_list  := { ;
                         "Courier",                  ;
@@ -217,7 +217,7 @@ METHOD DefineFont( cFontName, nSize )
          ttf_list:= GetHaruFontList()
          i:= aScan( ttf_list, {|x| UPPER( x[1] ) == Upper( cFontName ) } )
          IF i > 0
-            cFontName:= HPDF_LoadTTFontFromFile( ::hPdf, ttf_list[i,2], .f. )
+            cFontName:= HPDF_LoadTTFontFromFile( ::hPdf, ttf_list[i,2], lEmbed )
             DEBUGMSG 'Cargada fuente ' + cFontName
             DEBUGMSG 'Fichero ' + ttf_list[i,2]
             aAdd( ::LoadedFonts, { ttf_list[i,1], cFontName } )
