@@ -12,6 +12,10 @@
 #define __NODEBUG__
 #include 'debug.ch'
 
+#ifdef __XHARBOUR__
+   #translate HB_HHasKey( <u> ) => HHasKey( <u> )
+#endif
+
 //------------------------------------------------------------------------------
 CLASS THaruPDFBase
    // Implementación de la clase wrapper, que reemplaza al objeto Printer de FW
