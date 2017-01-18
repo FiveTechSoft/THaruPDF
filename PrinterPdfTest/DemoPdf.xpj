@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<Project>
+   <Type Value="exe"/>
+   <Description Value="DemoPdf"/>
+   <Output Value="DemoPdf.exe"/>
+   <Environment Value="Harbour"/>
+   <MainModule Value="DemoPdf.prg"/>
+   <MultipleInstances Value="Y"/>
+   <XPManifest Value="Y"/>
+   <Icon Value=""/>
+   <Parameters Value=""/>
+   <Version>
+      <VersionInfo Value="N"/>
+      <Version Value="1.0"/>
+      <Release Value="0"/>
+      <Build Value="0"/>
+      <Company Value=""/>
+      <CopyRight Value=""/>
+      <TradeMarks Value=""/>
+      <Comments Value=""/>
+   </Version>
+   <Directories>
+      <SourceDir Value="Source"/>
+      <IncludeDir Value="Include"/>
+      <ResourceDir Value="Resource"/>
+      <ObjDir Value="Obj"/>
+   </Directories>
+   <Options>
+      <AutomaticMemvarDeclaration Value="N"/>
+      <DebugInfo Value="N"/>
+      <SuppressLineNumberInformation Value="N"/>
+      <SuppressShortcutting Value="N"/>
+      <WarnningLevel Value="1"/>
+      <MoreOptions Value=""/>
+      <MoreCOpt Value=""/>
+      <MapFile Value="N"/>
+      <ConsoleMode Value="N"/>
+      <MoreLinkOpt Value=""/>
+   </Options>
+   <Export>
+      <Dir Value=""/>
+      <Source Value="Y"/>
+      <Exe Value="N"/>
+      <Bin Value="N"/>
+      <Resource Value="Y"/>
+      <ResourceAll Value="N"/>
+      <ErrorLog Value="N"/>
+      <Subprojects Value="Y"/>
+   </Export>
+   <Clean>
+      <All Value="N"/>
+   </Clean>
+   <FinalExe>
+      <FullCompile Value="N"/>
+      <UpxCompress Value="N"/>
+      <CompressFlags Value=""/>
+      <Installer Value="N"/>
+      <InstallerFlags Value=""/>
+      <TlbInfo Value="N"/>
+   </FinalExe>
+   <VCS>
+      <Type Value="None"/>
+   </VCS>
+   <Files>
+      <File Filename="DemoPdf.prg"/>
+      <File Filename="i2of5txt.prg"/>
+   </Files>
+   <Libraries>
+      <Library Filename="[harbour]hbdebug.lib" Link="N"/>
+      <Library Filename="[harbour]debug.lib" Link="N"/>
+      <Library Filename="[harbour]gtstd.lib" Link="N"/>
+      <Library Filename="[harbour]hbzlib.lib"/>
+      <Library Filename="[harbour]hbhpdf.lib"/>
+      <Library Filename="[project]Lib\png.lib"/>
+      <Library Filename="[project]Lib\PdfPrinter.lib"/>
+      <Library Filename="[project]Lib\libhpdf.lib"/>
+      <Library Filename="[Harbour]xhb.lib" Link="N"/>
+      <Library Filename="[Harbour]hbrtl.lib"/>
+      <Library Filename="[Harbour]hbvm.lib"/>
+      <Library Filename="[Harbour]gtwin.lib"/>
+      <Library Filename="[Harbour]gtgui.lib" Link="N"/>
+      <Library Filename="[Harbour]hblang.lib"/>
+      <Library Filename="[Harbour]hbmacro.lib"/>
+      <Library Filename="[Harbour]hbcommon.lib"/>
+      <Library Filename="[Harbour]hbpp.lib"/>
+      <Library Filename="[Harbour]hbcpage.lib"/>
+      <Library Filename="[Harbour]hbnulrdd.lib"/>
+      <Library Filename="[Harbour]hbrdd.lib" Link="N"/>
+      <Library Filename="[Harbour]rddntx.lib" Link="N"/>
+      <Library Filename="[Harbour]rddcdx.lib" Link="N"/>
+      <Library Filename="[Harbour]rddfpt.lib" Link="N"/>
+      <Library Filename="[Harbour]hbsix.lib" Link="N"/>
+      <Library Filename="[Harbour]hbbmcdx.lib" Link="N"/>
+      <Library Filename="[Harbour]rddads.lib" Link="N"/>
+      <Library Filename="[Harbour]ace32.lib" Link="N"/>
+      <Library Filename="[Harbour]rddado.lib" Link="N"/>
+      <Library Filename="[Harbour]hbct.lib" Link="N"/>
+      <Library Filename="[Harbour]hbpcre.lib" Link="N"/>
+      <Library Filename="[Harbour]hbole.lib" Link="N"/>
+      <Library Filename="[bcc]c0w32.obj"/>
+      <Library Filename="[bcc]psdk\odbc32.lib"/>
+      <Library Filename="[bcc]psdk\msimg32.lib"/>
+      <Library Filename="[bcc]cw32.lib"/>
+      <Library Filename="[bcc]import32.lib"/>
+      <Library Filename="[bcc]wininet.lib"/>
+   </Libraries>
+</Project>
+
