@@ -34,6 +34,9 @@ CLASS THaruPDFBase
 
    DATA hImageList
 
+   DATA lPreview INIT .F.
+   DATA bPreview
+
    CONSTRUCTOR New()
    METHOD SetPage()
    METHOD SetLandscape()
@@ -61,6 +64,8 @@ CLASS THaruPDFBase
    METHOD CmLine()
    METHOD Rect()
    METHOD CmRect()
+   MESSAGE Box METHOD Rect
+   MESSAGE CmBox METHOD CmRect
    METHOD DashLine()
    METHOD CmDashLine()
    METHOD Save()
@@ -72,7 +77,7 @@ CLASS THaruPDFBase
 ENDCLASS
 
 //------------------------------------------------------------------------------
-METHOD New( cFileName, cPassword, cOwnerPassword, nPermission )
+METHOD New( cFileName, cPassword, cOwnerPassword, nPermission, lPreview, bPreview )
 //------------------------------------------------------------------------------
    ::hPdf := HPDF_New()
    ::LoadedFonts:= {}
@@ -90,6 +95,12 @@ METHOD New( cFileName, cPassword, cOwnerPassword, nPermission )
    ::nPermission := nPermission
 
    ::hImageList:= { => }
+
+   // Mastintin
+   IF HB_ISLOGICAL( lPreview )
+      ::lPreview:= lPreview
+      ::bPreview := { || HaruShellexecute( NIL, "open", ::cFileName ) }
+   ENDIF
 
 RETURN Self
 
@@ -165,6 +176,7 @@ METHOD Say( nRow, nCol, cText, oFont, nWidth, nClrText, nBkMode, nPad )
       nWidth := HPDF_Page_TextWidth( ::hPage, cText )
       HPDF_Page_TextOut( ::hPage, nCol-nWidth, ::nHeight - nRow - oFont[2], cText )
    OTHER
+      nWidth := HPDF_Page_TextWidth( ::hPage, cText )
       HPDF_Page_TextOut( ::hPage, nCol-nWidth/2, ::nHeight - nRow - oFont[2], cText )
    ENDCASE
 
