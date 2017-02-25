@@ -64,11 +64,13 @@
    <Files>
       <File Filename="THaruPDFBase.prg" UseFlags="Y" Flags="/n /w1 /p"/>
       <File Filename="THaruPDF.prg"/>
-      <File Filename="leeme.txt"/>
       <File Filename="HaruFonts.prg"/>
       <File Filename="harupdf.ch"/>
       <File Filename="readme.md"/>
       <File Filename=".gitignore"/>
+      <File Filename="HaruPrintMgr.prg"/>
+      <File Filename="HaruPrint.ch"/>
+      <File Filename="HaruUtils.prg"/>
    </Files>
 </Project>
 

@@ -12,7 +12,9 @@ LIB_INCLUDE_DIR  = include
 
 LIB_PRG_LIST =  THaruPdf.prg \
                 THaruPdfBase.prg \
-                HaruFonts.prg 
+                HaruFonts.prg \
+                HaruUtils.prg \
+                HaruPrintMgr.prg
 
 LIB_C_LIST =   
 

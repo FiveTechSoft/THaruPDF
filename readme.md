@@ -19,12 +19,15 @@ ahora escribimos
 opcionalmente podemos indicar desde el principio el nombre del pdf y los valores
 de las contraseńas. Los parámetros completos son
 
- oPrint:= THaruPdf():New( cFileName, cPassword, cOwnerPassword, nPermission )
+ oPrint:= THaruPdf():New( cFileName, cPassword, cOwnerPassword, nPermission, lPreview )
 
 cPassword es la clave para acceder al pdf con los limites indicados por
 nPermission, cOwnerPassword es para poder modificarlo.
 nPermission se establece por defecto como HPDF_ENABLE_READ + HPDF_ENABLE_PRINT + HPDF_ENABLE_COPY
 Los parámetros de seguridad son totalmente opcionales.
+lPreview indica si, al final de la generación, el programa debe lanzar la visualización del pdf generado. 
+Para ello la librería lanzará el gestor de apertura que el usuario tenga definido en el sistema operativo de 
+forma automática. Este comportamiento se puede cambiar definiendo el codeblock :bPreview de la clase.
 
 Si estos valores se establecen al crear el objeto, cuando se invoque a End()
 automáticamente grabará el pdf. Si no se indica nada al crear el objeto, se graba
@@ -33,12 +36,32 @@ manualmente con el método Save
     oPrint:Save( cNombreDelPdf ) //  --> devuelve un valor numérico
 
 El método Save() devuelve un valor numérico. Si todo está bien, devuelve 0, un
-valor diferente de 0 indica algún error de Haru.
+valor diferente de 0 indica algún error de Haru. Véase la table de errores respectiva en la propia librería.
 
 ## Inicio y Fin de página
 
     oPrint:StartPage()
     oPrint:EndPage()
+
+## Uso de comandos
+Opcionalmente están disponibles algunos comandos equivalentes a los propios de la impresión con TPrinter, definidos
+el el include 'HaruPrint.prg'
+
+- Declaración del objeto THaruPdf
+´´´
+	PRINT <oPrint> TO HARU [ FILE <cFile> ] ;
+          [ <lPreview: PREVIEW> ] ;
+          [ USER PASS <cUserpass>  ] ;
+          [ OWNER PASS <cOwnerpass>  ] ;
+          [ PERMISION  <nPermision>  ] ;
+´´´
+- Inicio y fin de página
+	PAGE
+	ENDPAGE
+- Fin de la impresión
+
+	ENDPRINT
+
 
 ## Fuentes
 
@@ -99,7 +122,7 @@ función:
 donde cDir es el directorio donde queremos que busque las fuentes.
 
 ## imagenes
-De momento solo soporta imágenes en formato PNG y JPG.
+De momento la librería solo soporta imágenes en formato PNG y JPG.
 Atención/Achtung/Warning: Las pruebas realizadas indican que usar pngs generados
 con Paint producen pdfs enormes y son muy lentos.
 La librería ha sido optimizada para cargar las imágenes de forma indexada, es

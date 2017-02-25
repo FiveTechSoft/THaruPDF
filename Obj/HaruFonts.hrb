@@ -1,0 +1,185 @@
+/*
+ * Harbour 3.2.0dev (r1601050904)
+ * Borland/Embarcadero C++ 7.0 (32-bit)
+ * Generated C source from "source\HaruFonts.prg"
+ */
+
+#include "hbvmpub.h"
+#include "hbinit.h"
+
+
+HB_FUNC( SETHARUFONTDIR );
+HB_FUNC_EXTERN( VALTYPE );
+HB_FUNC_EXTERN( HB_DIREXISTS );
+HB_FUNC( GETHARUFONTDIR );
+HB_FUNC_EXTERN( HARUGETSPECIALFOLDER );
+HB_FUNC( GETHARUFONTLIST );
+HB_FUNC_STATIC( INITTTFFONTLIST );
+HB_FUNC_EXTERN( AEVAL );
+HB_FUNC( HARUADDFONT );
+HB_FUNC_EXTERN( FILE );
+HB_FUNC_EXTERN( AADD );
+HB_FUNC_EXTERN( ALERT );
+HB_FUNC_INITSTATICS();
+
+
+HB_INIT_SYMBOLS_BEGIN( hb_vm_SymbolInit_HARUFONTS )
+{ "SETHARUFONTDIR", {HB_FS_PUBLIC | HB_FS_FIRST | HB_FS_LOCAL}, {HB_FUNCNAME( SETHARUFONTDIR )}, NULL },
+{ "VALTYPE", {HB_FS_PUBLIC}, {HB_FUNCNAME( VALTYPE )}, NULL },
+{ "HB_DIREXISTS", {HB_FS_PUBLIC}, {HB_FUNCNAME( HB_DIREXISTS )}, NULL },
+{ "GETHARUFONTDIR", {HB_FS_PUBLIC | HB_FS_LOCAL}, {HB_FUNCNAME( GETHARUFONTDIR )}, NULL },
+{ "HARUGETSPECIALFOLDER", {HB_FS_PUBLIC}, {HB_FUNCNAME( HARUGETSPECIALFOLDER )}, NULL },
+{ "GETHARUFONTLIST", {HB_FS_PUBLIC | HB_FS_LOCAL}, {HB_FUNCNAME( GETHARUFONTLIST )}, NULL },
+{ "INITTTFFONTLIST", {HB_FS_STATIC | HB_FS_LOCAL}, {HB_FUNCNAME( INITTTFFONTLIST )}, NULL },
+{ "AEVAL", {HB_FS_PUBLIC}, {HB_FUNCNAME( AEVAL )}, NULL },
+{ "HARUADDFONT", {HB_FS_PUBLIC | HB_FS_LOCAL}, {HB_FUNCNAME( HARUADDFONT )}, NULL },
+{ "FILE", {HB_FS_PUBLIC}, {HB_FUNCNAME( FILE )}, NULL },
+{ "AADD", {HB_FS_PUBLIC}, {HB_FUNCNAME( AADD )}, NULL },
+{ "ALERT", {HB_FS_PUBLIC}, {HB_FUNCNAME( ALERT )}, NULL },
+{ "(_INITSTATICS00002)", {HB_FS_INITEXIT | HB_FS_LOCAL}, {hb_INITSTATICS}, NULL }
+HB_INIT_SYMBOLS_EX_END( hb_vm_SymbolInit_HARUFONTS, "source\\HaruFonts.prg", 0x0, 0x0003 )
+
+#if defined( HB_PRAGMA_STARTUP )
+   #pragma startup hb_vm_SymbolInit_HARUFONTS
+#elif defined( HB_DATASEG_STARTUP )
+   #define HB_DATASEG_BODY    HB_DATASEG_FUNC( hb_vm_SymbolInit_HARUFONTS )
+   #include "hbiniseg.h"
+#endif
+
+HB_FUNC( SETHARUFONTDIR )
+{
+	static const HB_BYTE pcode[] =
+	{
+		13,1,1,116,12,0,36,17,0,103,2,0,80,2,
+		36,18,0,176,1,0,95,1,12,1,106,2,67,0,
+		8,28,19,176,2,0,95,1,12,1,28,10,36,19,
+		0,95,1,82,2,0,36,21,0,95,2,110,7
+	};
+
+	hb_vmExecute( pcode, symbols );
+}
+
+HB_FUNC( GETHARUFONTDIR )
+{
+	static const HB_BYTE pcode[] =
+	{
+		116,12,0,36,29,0,103,2,0,100,8,28,15,36,
+		30,0,176,4,0,92,20,12,1,82,2,0,36,33,
+		0,103,2,0,110,7
+	};
+
+	hb_vmExecute( pcode, symbols );
+}
+
+HB_FUNC( GETHARUFONTLIST )
+{
+	static const HB_BYTE pcode[] =
+	{
+		116,12,0,36,38,0,103,1,0,100,8,28,10,36,
+		39,0,176,6,0,20,0,36,41,0,103,1,0,110,
+		7
+	};
+
+	hb_vmExecute( pcode, symbols );
+}
+
+HB_FUNC_STATIC( INITTTFFONTLIST )
+{
+	static const HB_BYTE pcode[] =
+	{
+		13,1,0,116,12,0,36,50,0,106,6,65,114,105,
+		97,108,0,106,10,97,114,105,97,108,46,116,116,102,
+		0,4,2,0,106,8,86,101,114,100,97,110,97,0,
+		106,12,118,101,114,100,97,110,97,46,116,116,102,0,
+		4,2,0,106,12,67,111,117,114,105,101,114,32,78,
+		101,119,0,106,9,99,111,117,114,46,116,116,102,0,
+		4,2,0,106,8,67,97,108,105,98,114,105,0,106,
+		12,99,97,108,105,98,114,105,46,116,116,102,0,4,
+		2,0,106,7,84,97,104,111,109,97,0,106,11,116,
+		97,104,111,109,97,46,116,116,102,0,4,2,0,4,
+		5,0,80,1,36,52,0,4,0,0,82,1,0,36,
+		53,0,176,7,0,95,1,89,22,0,1,0,0,0,
+		176,8,0,95,1,122,1,95,1,92,2,1,12,2,
+		6,20,2,36,55,0,100,110,7
+	};
+
+	hb_vmExecute( pcode, symbols );
+}
+
+HB_FUNC( HARUADDFONT )
+{
+	static const HB_BYTE pcode[] =
+	{
+		13,1,2,36,60,0,176,5,0,12,0,80,3,36,
+		61,0,176,9,0,95,2,12,1,31,40,176,9,0,
+		176,3,0,12,0,106,2,92,0,72,95,2,72,12,
+		1,28,20,36,62,0,176,3,0,12,0,106,2,92,
+		0,72,95,2,72,80,2,36,64,0,176,9,0,95,
+		2,12,1,28,21,36,65,0,176,10,0,95,3,95,
+		1,95,2,4,2,0,20,2,25,36,36,67,0,176,
+		11,0,106,21,65,114,99,104,105,118,111,32,105,110,
+		101,120,105,115,116,101,110,116,101,32,0,95,2,72,
+		20,1,36,70,0,100,110,7
+	};
+
+	hb_vmExecute( pcode, symbols );
+}
+
+HB_FUNC_INITSTATICS()
+{
+	static const HB_BYTE pcode[] =
+	{
+		117,12,0,2,0,116,12,0,100,82,1,0,7
+	};
+
+	hb_vmExecute( pcode, symbols );
+}
+
+#line 77 "source\\HaruFonts.prg"
+
+/*
+#define NOERROR = 0
+#define CSIDL_DESKTOP = 0x0000
+#define CSIDL_PROGRAMS = 0x0002
+#define CSIDL_CONTROLS = 0x0003
+#define CSIDL_PRINTERS = 0x0004
+#define CSIDL_PERSONAL = 0x0005
+#define CSIDL_FAVORITES = 0x0006
+#define CSIDL_STARTUP = 0x0007
+#define CSIDL_RECENT = 0x0008
+#define CSIDL_SENDTO = 0x0009
+#define CSIDL_BITBUCKET = 0x000A
+#define CSIDL_STARTMENU = 0x000B
+#define CSIDL_DESKTOPDIRECTORY = 0x0010
+#define CSIDL_DRIVES = 0x0011
+#define CSIDL_NETWORK = 0x0012
+#define CSIDL_NETHOOD = 0x0013
+#define CSIDL_FONTS = 0x0014
+#define CSIDL_TEMPLATES = 0x0015
+#define MAX_PATH = 260
+*/
+
+
+#include <windows.h>
+#include <shlobj.h>
+#include "hbapi.h"
+
+HB_FUNC( HARUGETSPECIALFOLDER ) // ( CSIDL )
+{
+   char buffer[MAX_PATH];
+
+   if( SHGetSpecialFolderPath( GetActiveWindow(), (LPSTR) &buffer, (WORD) hb_parni(1), FALSE ) )
+   {
+      hb_retc( &buffer[0] );
+   }
+   else
+   {
+      hb_retc( "" );
+   }
+
+   return;
+
+
+};
+
+

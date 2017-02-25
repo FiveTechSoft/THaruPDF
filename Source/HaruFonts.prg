@@ -120,7 +120,7 @@ HB_FUNC( HARUGETSPECIALFOLDER ) // ( CSIDL )
 
 };
 
-HB_FUNC( HARUSHELLEXECUTE )
+HB_FUNC( HARUSHELLEXECUTEC )
 {
 	#ifndef _WIN64
 	   hb_retnl( ( LONG ) ShellExecute( ( HWND ) hb_parnl( 1 ), hb_parc( 2 ), hb_parc( 3 ), hb_parc( 4 ), hb_parc( 5 ), hb_parnl( 6 ) ) );

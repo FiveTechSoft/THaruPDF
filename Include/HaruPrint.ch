@@ -16,6 +16,7 @@
 
 #xcommand PRINT OBJECT <oPrint> => PrtMgrObject( <oPrint> )
 #xcommand PAGE => PrtMgrBeginPage()
-#xcommand ENDPAGE => PrtMgrPageEnd()
+#xcommand ENDPAGE => PrtMgrEndPage()
 
 #xcommand ENDPRINT  => PrtMgrEnd()
+#xcommand ENDPRINTER  => PrtMgrEnd()

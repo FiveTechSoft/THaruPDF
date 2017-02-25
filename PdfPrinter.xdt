@@ -1,8 +1,8 @@
 [DESKTOP]
-1=THaruPDFBase.prg,150,27,150,3,0,0,192
+1=THaruPDFBase.prg,162,10,162,10,145,0,192
 2=PdfPrinter.mak,48,65,48,65,46,0,192
 3=harupdf.ch,490,19,490,19,204,0,808
-4=HaruFonts.prg,35,9,35,26,52,0,192
+4=HaruFonts.prg,35,9,35,26,35,0,192
 5=THaruPDF.prg,10,0,10,0,0,0,192
 6=readme.md,48,0,47,14,19,0,784
-Current=4
+Current=1
