@@ -48,6 +48,7 @@ CLASS THaruPDFBase
    METHOD EndPage()
    METHOD Say()
    METHOD CmSay()
+   METHOD SayRotate( nTop, nLeft, cTxt, oFont, nClrText, nAngle )
    METHOD DefineFont()
    METHOD Cmtr2Pix( nRow, nCol )
    METHOD Mmtr2Pix( nRow, nCol )
@@ -512,3 +513,34 @@ RETURN Self
 
 METHOD CmRoundBox( nTop, nLeft, nBottom, nRight, nWidth, nHeight, oPen, nColor, nBackColor, lFondo )
 RETURN ::RoundBox( nTop * 72 / 2.54, nLeft * 72 / 2.54, nBottom * 72 / 2.54, nRight * 72 / 2.54, nWidth * 72 / 2.54, nHeight * 72 / 2.54, oPen, nColor, nBackColor, lFondo )
+
+METHOD SayRotate( nTop, nLeft, cTxt, oFont, nClrText, nAngle )
+
+   LOCAL aBackColor
+   LOCAL nRadian := ( nAngle / 180 ) * 3.141592 /* Calcurate the radian value. */
+
+    IF ValType( nClrText ) == 'N'
+      aBackColor:= HPDF_Page_GetRGBFill( ::hPage )
+      HPDF_Page_SetRGBFill( ::hPage, ( Int( nClrText / 0x10000 ) % 256 ) / 256.00, ( Int( nClrText / 0x100 )  % 256 )  / 256.00 , ( nClrText  % 256 ) / 256.00 )
+   ENDIF
+
+   /* FONT and SIZE*/
+   If !Empty( oFont )
+       HPDF_Page_SetFontAndSize( ::hPage, oFont[1], oFont[2] )
+   EndI
+
+   /* Rotating text */
+   HPDF_Page_BeginText( ::hPage )
+   HPDF_Page_SetTextMatrix( ::hPage, cos( nRadian ),;
+                                     sin( nRadian ),;
+                                     -( sin( nRadian ) ),;
+                                     cos( nRadian ), nLeft, HPDF_Page_GetHeight( ::hPage )-( nTop ) )
+   HPDF_Page_ShowText( ::hPage, cTxt )
+
+   IF ValType( aBackColor ) == 'A'
+      HPDF_Page_SetRGBFill( ::hPage, aBackColor[1], aBackColor[2], aBackColor[3] )
+   ENDIF
+
+   HPDF_Page_EndText( ::hPage )
+
+Return NIL
