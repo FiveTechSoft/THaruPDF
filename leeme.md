@@ -5,7 +5,6 @@ La clase THaruPdf intenta proveer las mismas funciones de la clase TPrinter de
 FW de modo que se pueda usar en su reemplazo con el mínimo de cambios.
 
 
-
 ## Declaración del objeto de impresión
 
 Donde antes escribíamos
