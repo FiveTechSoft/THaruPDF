@@ -200,7 +200,7 @@ METHOD Say( nRow, nCol, cText, oFont, nWidth, nClrText, nBkMode, nPad )
    ENDIF
    IF ValType( nClrText ) == 'N'
       c := HPDF_Page_GetRGBFill( ::hPage )
-      HPDF_Page_SetRGBFill( ::hPage, ( Int( nClrText / 0x10000 ) % 256 ) / 256.00, ( Int( nClrText / 0x100 )  % 256 )  / 256.00, ( nClrText  % 256 ) / 256.00 )
+      HPDF_Page_SetRGBFill( ::hPage, ( nClrText % 256 ) / 256.00, ( Int( nClrText / 0x100 )  % 256 )  / 256.00 , (  Int(nClrText / 0x10000 ) % 256 ) / 256.00 )
    ENDIF
 
    DO CASE
